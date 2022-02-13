@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "161064038453",
+    "project_id": "groupetontine-11822",
+    "storage_bucket": "groupetontine-11822.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161064038453:android:9284aa2ae254904695017c",
+        "android_client_info": {
+          "package_name": "com.groupeTontine2022"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161064038453-gsqi6pcja690t0vcpttqnqrcdpur792u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1vzcZagQqtoqD5plcJreugM7DvXzbuQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161064038453-gsqi6pcja690t0vcpttqnqrcdpur792u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
