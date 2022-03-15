@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:itontiapp/accueil.dart';
+import 'package:itontiapp/dashboard.dart';
 import 'package:itontiapp/goupe.dart';
+import 'package:itontiapp/iconBoutton.dart';
 import 'package:itontiapp/listeGroupe.dart';
 
 class Barriere extends StatelessWidget {
@@ -11,26 +13,122 @@ class Barriere extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      /* appBar: AppBar(
-        elevation: 0,
-        leading: IconButton(
-          onPressed: null,
-          icon: Icon(
-            Icons.menu,
-          ),
-        ),
-      ),
-      */
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "Accueil",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          backgroundColor: Colors.blue,
+        ),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              CircleAvatar(
+                radius: 90,
+                backgroundImage: AssetImage("images/profil.png"),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: Text(
+                  "Youssou Fall",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Center(
+                child: Text("77 800 00 00 "),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                  size: 50,
+                  color: Colors.lightBlueAccent,
+                ),
+                title: Text(
+                  "Accueil",
+                  style: TextStyle(fontSize: 18),
+                ),
+                trailing: Icon(Icons.navigate_next),
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.dashboard,
+                  size: 50,
+                  color: Colors.lightBlueAccent,
+                ),
+                title: Text(
+                  "Tableau de bord",
+                  style: TextStyle(fontSize: 18),
+                ),
+                trailing: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext) => Dashboard()));
+                    },
+                    icon: Icon(Icons.navigate_next)),
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                  size: 50,
+                  color: Colors.lightBlueAccent,
+                ),
+                title: Text(
+                  "Parametres",
+                  style: TextStyle(fontSize: 18),
+                ),
+                trailing: Icon(Icons.navigate_next),
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.account_box_outlined,
+                  size: 50,
+                  color: Colors.lightBlueAccent,
+                ),
+                title: Text(
+                  "Deconnexion",
+                  style: TextStyle(fontSize: 18),
+                ),
+                trailing: Icon(Icons.navigate_next),
+              ),
+            ],
+          ),
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 40),
-              titleSection,
+              SizedBox(height: 20),
+              //titleSection,
               searchSection,
               topContainer,
-              iconSection,
+              SectionIconButton(),
               lineSection,
               subTitleSection,
               Groupe(),
@@ -146,108 +244,6 @@ Widget topContainer = Container(
       Text(
         'Developpes ton portefeuille en toute sécurité!',
         style: TextStyle(color: Colors.white, fontSize: 17),
-      ),
-    ],
-  ),
-);
-
-Widget iconSection = Container(
-  padding: EdgeInsets.all(10),
-  margin: EdgeInsets.fromLTRB(20, 20, 20, 10),
-  child: Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Container(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.new_releases,
-                  color: Colors.white,
-                  size: 30,
-                ),
-              ),
-            ),
-            SizedBox(height: 5),
-            Text('New')
-          ],
-        ),
-      ),
-      Container(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.monetization_on,
-                  color: Colors.white,
-                  size: 30,
-                ),
-              ),
-            ),
-            SizedBox(height: 5),
-            Text('Payer')
-          ],
-        ),
-      ),
-      Container(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                color: Colors.pink,
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: IconButton(
-                icon: Icon(
-                  Icons.light,
-                  color: Colors.white,
-                  size: 30,
-                ),
-                onPressed: () {},
-              ),
-            ),
-            SizedBox(height: 5),
-            Text('Démo')
-          ],
-        ),
-      ),
-      Container(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                color: Colors.purple[300],
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.details,
-                  color: Colors.white,
-                  size: 30,
-                ),
-              ),
-            ),
-            SizedBox(height: 5),
-            Text('A propos')
-          ],
-        ),
       ),
     ],
   ),

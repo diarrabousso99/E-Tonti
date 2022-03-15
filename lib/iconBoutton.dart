@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:itontiapp/payer.dart';
-import 'package:itontiapp/proprio.dart';
-import 'package:itontiapp/rejoindre.dart';
+import 'package:itontiapp/newGroupe.dart';
 
-class IconSection extends StatefulWidget {
-  String idGroupe;
-  IconSection({required this.idGroupe}) : super();
-
-  String get getId {
-    return idGroupe;
-  }
+class SectionIconButton extends StatefulWidget {
+  SectionIconButton({Key? key}) : super(key: key);
 
   @override
-  _IconSectionState createState() => _IconSectionState();
+  State<SectionIconButton> createState() => _SectionIconButtonState();
 }
 
-class _IconSectionState extends State<IconSection> {
+class _SectionIconButtonState extends State<SectionIconButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,26 +24,25 @@ class _IconSectionState extends State<IconSection> {
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     color: Colors.orange,
-                    borderRadius: BorderRadius.circular(100),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                   child: IconButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext) => Rejoindre(
-                                    id: widget.idGroupe,
-                                  )));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        return compte();
+                        // return Verification(phoneController.text);
+                      }));
                     },
                     icon: Icon(
-                      Icons.group_add,
+                      Icons.new_releases,
                       color: Colors.white,
                       size: 30,
                     ),
                   ),
                 ),
                 SizedBox(height: 5),
-                Text('Rejoindre')
+                Text('New')
               ],
             ),
           ),
@@ -61,15 +53,10 @@ class _IconSectionState extends State<IconSection> {
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     color: Colors.blue,
-                    borderRadius: BorderRadius.circular(100),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                   child: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext) => Payer()));
-                    },
+                    onPressed: () {},
                     icon: Icon(
                       Icons.monetization_on,
                       color: Colors.white,
@@ -89,11 +76,11 @@ class _IconSectionState extends State<IconSection> {
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     color: Colors.pink,
-                    borderRadius: BorderRadius.circular(100),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                   child: IconButton(
                     icon: Icon(
-                      Icons.share,
+                      Icons.light,
                       color: Colors.white,
                       size: 30,
                     ),
@@ -101,7 +88,7 @@ class _IconSectionState extends State<IconSection> {
                   ),
                 ),
                 SizedBox(height: 5),
-                Text('Partager')
+                Text('Démo')
               ],
             ),
           ),
@@ -112,24 +99,19 @@ class _IconSectionState extends State<IconSection> {
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     color: Colors.purple[300],
-                    borderRadius: BorderRadius.circular(100),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                   child: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext) => Proprio()));
-                    },
+                    onPressed: () {},
                     icon: Icon(
-                      Icons.settings_accessibility,
+                      Icons.details,
                       color: Colors.white,
                       size: 30,
                     ),
                   ),
                 ),
                 SizedBox(height: 5),
-                Text('Proprietaire')
+                Text('A propos')
               ],
             ),
           ),

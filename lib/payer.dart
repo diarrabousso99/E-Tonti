@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itontiapp/accueil.dart';
 import 'package:itontiapp/free.dart';
 import 'package:itontiapp/infoGroupe.dart';
 import 'package:itontiapp/wave.dart';
@@ -38,7 +39,9 @@ class _PayerState extends State<Payer> {
                 style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.orangeAccent)),
-                onPressed: null,
+                onPressed: () {
+                  showSimpleDialog(context);
+                },
                 child: Text(
                   "Payer",
                   style: TextStyle(
@@ -49,6 +52,45 @@ class _PayerState extends State<Payer> {
           ],
         ),
       ),
+    );
+  }
+
+  void showSimpleDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Expanded(
+          child: AlertDialog(
+            title: Text('Confirmation'),
+            content: Text(
+                'Vous allez efectuer un payement de XXXF sur le compte du proprio 77 799 98 90'),
+            actions: [
+              FlatButton(
+                textColor: Colors.black,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return Accueil();
+                    // return Verification(phoneController.text);
+                  }));
+                },
+                child: Text('OK'),
+              ),
+              FlatButton(
+                textColor: Colors.black,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return Accueil();
+                    // return Verification(phoneController.text);
+                  }));
+                },
+                child: Text('Anuler'),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

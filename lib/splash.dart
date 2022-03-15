@@ -39,9 +39,12 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image.asset("images/autre.jpg"),
+                      CircleAvatar(
+                        radius: 100,
+                        backgroundColor: Colors.white,
+                        backgroundImage: AssetImage(
+                          "images/tontine.png",
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 10),

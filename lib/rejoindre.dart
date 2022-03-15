@@ -1,13 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:itontiapp/accueil.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Rejoindre extends StatefulWidget {
-  const Rejoindre({Key? key}) : super(key: key);
+  String id;
+  Rejoindre({required this.id}) : super();
 
   @override
   _RejoindreState createState() => _RejoindreState();
 }
 
 class _RejoindreState extends State<Rejoindre> {
+  Future<void> addUser() {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    // Call the user's CollectionReference to add a new user
+    return users
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection('info')
+        .add({'nom': "dieng"})
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
+  }
+
+  Future<void>? rejoindreGroupe(idGroupe) {
+    CollectionReference adherentGroupe =
+        FirebaseFirestore.instance.collection('adherents');
+    String? myId = FirebaseAuth.instance.currentUser?.uid;
+    if (myId == null) {
+      print("User non connecté");
+      return null;
+    } else {
+      return adherentGroupe
+          .add({"idGroupe": idGroupe, "idUse": myId})
+          .then((value) => print("Adherent ajouté"))
+          .catchError((error) => print("Erreur d'ajout de l'adherent: $error"));
+      // /tontine/kGNX8RXoiIIizJ5k06wB/listeAdherents
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     TextEditingController phoneController = new TextEditingController();
@@ -42,17 +74,19 @@ class _RejoindreState extends State<Rejoindre> {
                   keyboardType: TextInputType.number,
                   controller: phoneController,
                   decoration: InputDecoration(
-                      icon: Icon(
-                        Icons.phone_android,
-                        color: Colors.orange,
-                      ),
-                      hintText: "Numero de Téléphone",
-                      prefix: Padding(
-                        padding: EdgeInsets.all(4),
-                        child: Text("+221"),
-                      ),
-                      hintStyle:
-                          TextStyle(color: Colors.blue.withOpacity(0.5))),
+                    icon: Icon(
+                      Icons.phone_android,
+                      color: Colors.orange,
+                    ),
+                    hintText: "Numero de Téléphone",
+                    prefix: Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Text("+221"),
+                    ),
+                    hintStyle: TextStyle(
+                      color: Colors.blue.withOpacity(0.5),
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 40,
@@ -76,7 +110,9 @@ class _RejoindreState extends State<Rejoindre> {
                   height: 30,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showSimpleDialog(context);
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.blue),
                   ),
@@ -90,6 +126,34 @@ class _RejoindreState extends State<Rejoindre> {
           ),
         ),
       ),
+    );
+  }
+
+  void showSimpleDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Expanded(
+          child: AlertDialog(
+            title: Text('Réussi'),
+            content: Text('Vous avez adheré au groupe'),
+            actions: [
+              FlatButton(
+                textColor: Colors.black,
+                onPressed: () {
+                  rejoindreGroupe(widget.id);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return Accueil();
+                    // return Verification(phoneController.text);
+                  }));
+                },
+                child: Text('OK'),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

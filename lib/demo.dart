@@ -12,6 +12,7 @@ class Animaation extends StatefulWidget {
 class _AnimaationState extends State<Animaation> {
   @override
   Widget build(BuildContext context) {
+    String idGroupe = "E5KbQ9yTVDd4qsx5Zccg";
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange,
@@ -27,7 +28,9 @@ class _AnimaationState extends State<Animaation> {
             SizedBox(
               height: 20,
             ),
-            IconSection(),
+            IconSection(
+              idGroupe: idGroupe,
+            ),
             SizedBox(
               height: 20,
             ),
@@ -145,5 +148,47 @@ Widget info = Container(
             ],
           ),
         ),
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Debut",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                '20/01/2021',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Fin",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                '20/01/2022',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        )
       ],
     ));

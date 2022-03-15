@@ -7,6 +7,7 @@ class JappalDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String idGroupe = "ePxOsN8TfQMhNn2bxwPH";
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange,
@@ -22,7 +23,9 @@ class JappalDetail extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            IconSection(),
+            IconSection(
+              idGroupe: idGroupe,
+            ),
             SizedBox(
               height: 20,
             ),
@@ -57,7 +60,7 @@ Widget topContainer = Container(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Text(
-        'Diamond Groupe',
+        'Jaapal Ma Japp',
         style: TextStyle(
           color: Colors.white,
           fontSize: 25,
@@ -118,7 +121,7 @@ Widget info = Container(
                 color: Colors.orangeAccent,
               ),
               Text(
-                '2,000 Fcfa',
+                '2,000 Fcfa/mois',
                 style: TextStyle(fontSize: 20),
               ),
             ],
@@ -129,7 +132,7 @@ Widget info = Container(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Icon(
-                Icons.timelapse,
+                Icons.hourglass_bottom,
                 size: 50,
                 color: Colors.pink,
               ),
@@ -140,5 +143,47 @@ Widget info = Container(
             ],
           ),
         ),
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Debut",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                '20/01/2021',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Fin",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                '20/01/2022',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        )
       ],
     ));
